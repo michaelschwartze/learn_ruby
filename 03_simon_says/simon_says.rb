@@ -5,11 +5,11 @@ end
 def shout(word)
   word.upcase
 end
-# needs fixing
-def repeat(word, x=1)
-  x.times do |word|
-    word + " "
-  end
+
+def repeat(word, x = 2)
+  ary = []
+  x.times { |x| ary << word }
+  ary.join(" ")
 end
 
 def start_of_word(word, num_of_letters)
@@ -19,12 +19,17 @@ end
 def first_word(input)
   input.split[0]
 end
-# needs fixing
+
 def titleize(string)
   nocap = ['and','over','the']
   output = []
-  string.split.each do |word|
-    nocap.include?(word) == false ? output << word.capitalize : output << word
+  words = string.split
+  words.each do |word|
+    if words.index(word) != 0
+      nocap.include?(word) == true ? output << word : output << word.capitalize!
+    elsif words.index(word) == 0
+      output << word.capitalize!
+    end
   end
   output.join(" ")
 end
