@@ -21,14 +21,10 @@ def first_word(input)
 end
 # needs fixing
 def titleize(string)
-  nocap = "the"
-  words = string.split
-  words.include?(nocap)
-
-  #words.map do |word|
-#    if words.include
-
-#    end
-
-#  end
+  nocap = ['and','over','the']
+  output = []
+  string.split.each do |word|
+    nocap.include?(word) == false ? output << word.capitalize : output << word
+  end
+  output.join(" ")
 end
